@@ -7,13 +7,8 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.dbs_room_project.databinding.ActivityNewWordBinding
+
 class NewWordActivity : AppCompatActivity() {
 
     private lateinit var editWordView: EditText
@@ -28,15 +23,14 @@ class NewWordActivity : AppCompatActivity() {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editWordView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-                Log.e("NewWordActivity", "Word not saved because it is empty ${editWordView.text}")
-
+                Log.e("NewWordActivity", "Result_cancle is : ${Activity.RESULT_CANCELED}")
             } else {
                 val word = editWordView.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, word)
                 setResult(Activity.RESULT_OK, replyIntent)
-                Log.e("NewWordActivity", "Word saved ${editWordView.text}")
+                Log.e("NewWordActivity", "Result_ok is : ${Activity.RESULT_OK}")
             }
-            finish()
+            finish()// this method closes the current activity and return to the parent activity.
         }
     }
 
