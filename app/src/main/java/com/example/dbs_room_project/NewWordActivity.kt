@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
@@ -27,10 +28,13 @@ class NewWordActivity : AppCompatActivity() {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editWordView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
+                Log.e("NewWordActivity", "Word not saved because it is empty ${editWordView.text}")
+
             } else {
                 val word = editWordView.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, word)
                 setResult(Activity.RESULT_OK, replyIntent)
+                Log.e("NewWordActivity", "Word saved ${editWordView.text}")
             }
             finish()
         }
